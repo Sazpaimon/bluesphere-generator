@@ -36,13 +36,13 @@ function write_page(act, type, usebackground, lev, stgc, pmnc, dat, cod, com)
       if (act == "expandedmap")
       {
         for (var i = 0; i < 4; i++)
-          page += "<td align=\"center\">&#8595; " + pmnc[picnum[i]] + " &#8595;</td>";
+          page += "<td align=\"center\">&#8595; " + pmnc[picnum[i]] + " (" + ddf[parseInt(pmnc[picnum[i]])] + ")" + " &#8595;</td>";
 
         page += "</tr>\n<tr" + bg + ">";
 
         for (i = 0; i < 16; i++)
         {
-          page += "<td><img src=\"" + pmnc[picnum[i]] + "-" + picltr[i] + ".png\" alt=\"[Section " + pmnc[picnum[i]] + "]\" /></td>";
+          page += "<td><img src=\"" + pmnc[picnum[i]] + "-" + picltr[i] + ".png\" alt=\"[Section " + pmnc[picnum[i]] + " (" + ddf[parseInt(pmnc[picnum[i]])] + ")" + "]\" /></td>";
 
           if ((i+1)%4 == 0 && i != 15)
             page += "</tr>\n<tr" + bg + ">";
@@ -51,18 +51,18 @@ function write_page(act, type, usebackground, lev, stgc, pmnc, dat, cod, com)
         page += "</tr>\n<tr>";
 
         for (i = 4; i < 8; i++)
-          page += "<td align=\"center\">&#8593; " + pmnc[picnum[i]] + " &#8593;</td>";
+          page += "<td align=\"center\">&#8593; " + pmnc[picnum[i]] + " (" + ddf[parseInt(pmnc[picnum[i]])] + ")" + " &#8593;</td>";
       }
       else
       {
         for (var i = 5; i > 3; i--)
-          page += "<td align=\"center\">&#8595; " + pmnc[picnum[i]] + " &#8595;</td>";
+          page += "<td align=\"center\">&#8595; " + pmnc[picnum[i]] + " (" + ddf[parseInt(pmnc[picnum[i]])] + ")" + " &#8595;</td>";
 
         page += "</tr>\n<tr" + bg + ">";
 
         for (i = 5; i > 1; i--)
         {
-          page += "<td><img src=\"" + pmnc[picnum[i]] + "-" + picltr[i] + ".png\" alt=\"[Section " + pmnc[picnum[i]] + "]\" /></td>";
+          page += "<td><img src=\"" + pmnc[picnum[i]] + "-" + picltr[i] + ".png\" alt=\"[Section " + pmnc[picnum[i]] + " (" + ddf[parseInt(pmnc[picnum[i]])] + ")" + "]\" /></td>";
 
           if (i%2 == 0 && i != 2)
             page += "</tr>\n<tr" + bg + ">";
@@ -70,7 +70,7 @@ function write_page(act, type, usebackground, lev, stgc, pmnc, dat, cod, com)
         page += "</tr>\n<tr>";
 
         for (i = 3; i > 1; i--)
-          page += "<td align=\"center\">&#8593; " + pmnc[picnum[i]] + " &#8593;</td>";
+          page += "<td align=\"center\">&#8593; " + pmnc[picnum[i]] + " (" + ddf[parseInt(pmnc[picnum[i]])] + ")" + " &#8593;</td>";
       }
 
       page += "</tr>\n</table>\n<br />\n<br />\n";
