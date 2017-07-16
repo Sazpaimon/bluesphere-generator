@@ -235,7 +235,7 @@ function bs_process(act, type, start, end, a, b, c, d, usebackground, sonic1cart
   if (!process_args)
     page += "<a onclick=\"javascript:reset_page();\" class=\"ln\">Return</a><br />\n<br />\n";
 
-  page += "<a href=\"http://drspud.no-ip.com/bluesphere/?act=" + act + (type == "level" || act == "custom" ? "" : "&amp;type=" + type) + (act == "custom" ? "&amp;a=" + a + "&amp;b=" + b + "&amp;c=" + c + "&amp;d=" + d : "&amp;" + (num_levels > 1 ? "start=" + start + "&amp;end=" + end : "n=" + start)) + (usebackground ? "&amp;usebackground=true" : "") + (sonic1cart ? "" : "&amp;nonsonic1cart=true") + "\">Link to this page</a>\n";
+  page += "<a href=\/?act=" + act + (type == "level" || act == "custom" ? "" : "&amp;type=" + type) + (act == "custom" ? "&amp;a=" + a + "&amp;b=" + b + "&amp;c=" + c + "&amp;d=" + d : "&amp;" + (num_levels > 1 ? "start=" + start + "&amp;end=" + end : "n=" + start)) + (usebackground ? "&amp;usebackground=true" : "") + (sonic1cart ? "" : "&amp;nonsonic1cart=true") + "\">Link to this page</a>\n";
 
   document.getElementById("g").innerHTML = page;
   document.getElementById("m").style.display = "none";
