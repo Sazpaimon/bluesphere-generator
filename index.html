@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>DrSpud.no-ip.com :: Blue Spheres Level/Code Generator</title>
+<meta name="MSSmartTagsPreventParsing" content="true" />
+<style type="text/css">
+  body {background: #111111; color: #DDDDDD; margin: 1em; font-family: sans-serif}
+  img {border-style: none;}
+  a:link {color: #55AAFF;}
+  a:visited {color: #2277CC;}
+  a:hover {color: #88DDFF;}
+  .h {text-align: center; font-size: x-large; font-weight: bold; margin-top: 1em; margin-bottom: 1em;}
+  .b {font-size: large; font-weight: bold;}
+  .l {float: right; width: 9.4em; margin-left: 2em;}
+  .i {margin-left: 1.5em;}
+  .m {margin-top: 1em;}
+  .f1, .f2 {display: inline; font-style: italic;}
+  .f1 {float: left;}
+  .f2 {float: right;}
+  .map td {padding: 0px;}
+  .map img {display: block;}
+  .map, .t {border-collapse: collapse;}
+  .t td {border: 1px solid; padding: 0.25em;}
+  .ln, .ln:visited, .ln:hover {color: #55AAFF; text-decoration: none; cursor: pointer;}
+  .ln:hover {background: #333333; border: 1px solid;}
+  @media print {.l {display: none;}}
+</style>
+<script type="text/javascript">
+  if (top.location != location) top.location.href = document.location.href;
+</script>
+<script type="text/javascript" src="./bsgen.js"></script>
+<script type="text/javascript" src="./bsprocess.js"></script>
+</head>
+<body onload="javascript:load();">
+<div class="h">Sonic 1 + Sonic &amp; Knuckles/Blue Sphere Level/Code Generator</div>
+<hr />
+<div class="m">
+<div class="l">
+<a href="http://drspud.no-ip.com/">DrSpud.no-ip.com</a><br />
+<br />
+<a href="mailto:DrSpud@mad.scientist.com">Email Me</a><br />
+<br />
+<br />
+</div>
+<noscript>
+<div style="font-style: italic;">Note: This page requires JavaScript to function.</div>
+</noscript>
+<div id="m">
+<div id="hlp">
+This is a code and map generator for the 'Get Blue Spheres!' game that you get by locking the 'Sonic the Hedgehog' game onto 'Sonic &amp; Knuckles' (for the Sega Genesis - also the 'Blue Sphere' game in Sonic Mega Collection you get by playing Sonic 1 and Sonic 3d Blast 20 times each). Note that most of the credit for this creation and copyright goes to Koji Nishio, the original author of this implementation of the set of algorithms. You can find the original at Koji's Sonic Kontrol <a href="http://www.din.or.jp/%7Ekoryan/sonic/gbs.htm">Get Blue Spheres</a> page. My version was created to understand the code and to make it possible to generate maps and info for hundreds of levels at a time, and to do some other interesting things with it (like find custom <a href="#fun">fun levels</a> and have different display modes). It also adds the ability to view the 'Non-Sonic 1' version of each code.<br />
+<br />
+A few notes about using the 'Find Custom Stage' function: Every level/stage is comprised of four separate sections, and each section is one out of 128 unique possibilities. Thus you enter numbers from 0 to 127 to find a stage that has each specified section. Not every stage has a corresponding level number due to how the algorithm works. (The stage number directly corresponds to the sections, whereas the level number is scrambled to get a pseudorandom stage. The scrambling algorithm can only produce a limited subset of stages.) However, rotating or otherwise rearranging the sections may produce a valid level number when all sections are below 125. As for levels with the remaining three, section 127 will only appear in a level in the top-right position, section 126 in the top-right and bottom-right positions, and 125 in all but the bottom-left position.<br />
+<br />
+Some random factoids:
+<ul>
+<li>There is a grand total of 2038438443 blue spheres and 1877085250 rings in the 134217728 levels of Blue Sphere.</li>
+<li>The average difficulty is 8.</li>
+</ul>
+<br />
+If you're interested in how the algorithm works or want to try it offline, you may download the complete <a href="http://drspud.no-ip.com/bluesphere/bsgen.zip">Blue Sphere Generator</a> (353 kB). There is also more information on the <a href="http://www.wikipedia.org/wiki/Blue_Sphere">Blue Sphere</a> page on Wikipedia and on the <a href="http://www.s2beta.com/forums/">Sonic 2 Beta Message Boards</a>. And if you have any questions or comments, please feel free to email me.<br />
+<br />
+Note that the minimum and maximum for levels and stages are 1 and 134217728, and 0 and 268435455, respectively.<br />
+<br />
+One final warning: don't try to generate a list of more than a few thousand levels. Since the generation is done with Javascript, it will slow your system down a great deal when processing a large number of levels.<br />
+<br />
+</div>
+<a onclick="javascript:var d = document.getElementById('hlp'); var h = document.getElementById('thlp'); if (d.style.display == 'none') {d.style.display = ''; h.innerHTML = 'Hide Help';} else {d.style.display = 'none'; h.innerHTML = 'Show Help';}" class="ln" id="thlp">Hide Help</a><br />
+<br />
+<br />
+<form action="" onsubmit="javascript:bs_process((document.getElementById('an').checked ? 'normalmap' : (document.getElementById('ae').checked ? 'expandedmap' : (document.getElementById('av').checked ? 'verbose' : (document.getElementById('aco').checked ? 'codes' : 'custom')))), (document.getElementById('tl').checked ? 'level' : 'stage'), document.getElementById('start').value, document.getElementById('end').value, document.getElementById('a').value, document.getElementById('b').value, document.getElementById('c').value, document.getElementById('d').value, document.getElementById('ub').checked, !document.getElementById('sc').checked); return false;">
+<div>
+<input name="act" value="normalmap" checked="checked" id="an" onclick="javascript:toggle_inputs();" type="radio" /><label for="an">Normal Map</label><br />
+<input name="act" value="expandedmap" id="ae" onclick="javascript:toggle_inputs();" type="radio" /><label for="ae">Expanded Map</label><br />
+<input name="act" value="verbose" id="av" onclick="javascript:toggle_inputs();" type="radio" /><label for="av">Verbose info only</label><br />
+<input name="act" value="codes" id="aco" onclick="javascript:toggle_inputs();" type="radio" /><label for="aco">Codes only</label><br />
+<input name="act" value="custom" id="acu" onclick="javascript:toggle_inputs();" type="radio" /><label for="acu">Find Custom Stage</label><br />
+<br />
+<div id="se">
+<input name="type" value="level" checked="checked" id="tl" type="radio" /><label for="tl">Level</label><br />
+<input name="type" value="stage" id="ts" type="radio" /><label for="ts">Stage</label><br />
+<br />
+Start: <input name="start" size="10" value="" id="start" type="text" />
+End: <input name="end" size="10" value="" id="end" type="text" /><br />
+</div>
+<div id="cu" style="display: none;">
+<table summary="Custom Map Sections">
+<tr><td>Top left:</td><td>Top right:</td></tr>
+<tr><td><input name="c" size="10" value="" id="c" type="text" /></td><td><input name="a" size="10" value="" id="a" type="text" /></td></tr>
+<tr><td>Bottom left:</td><td>Bottom right:</td></tr>
+<tr><td><input name="d" size="10" value="" id="d" type="text" /></td><td><input name="b" size="10" value="" id="b" type="text" /></td></tr>
+</table>
+</div>
+<br />
+<input name="nonsonic1cart" id="sc" type="checkbox" /><label for="sc">Non-Sonic 1 Cartridge</label><br />
+<input name="usebackground" id="ub" type="checkbox" /><label for="ub">Show background in map</label><br />
+<br />
+<input value="Generate" type="submit" /><br />
+</div>
+</form>
+<br />
+<br />
+Just for <a name="fun">fun</a>, try some of these levels I found with the custom option:<br />
+</div>
+<div id="g" style="display: none;">
+<br />
+</div>
+<br />
+<hr />
+<div class="f1">Page last modified on 2007/05/13 03:52:16 PM EDT</div>
+</div>
+</body></html>
